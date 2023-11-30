@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculo de Ferias</title>
+    
+    <link rel="icon" href="https://ashisheditz.com/wp-content/uploads/2023/10/monkey-d-luffy-wallpaper-4k.jpg"> 
+    <style>
+        body {
+            background-image: url('https://st.depositphotos.com/2369859/4125/i/600/depositphotos_41254319-stock-photo-abstract-dark-blue-background.jpg');
+            background-size: cover; /* Ajuste a escala da imagem */
+            background-repeat: no-repeat; /* Evita a repetição da imagem */
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh; /* Define a altura da tela inteira como contêiner */
+        }
+        .container {
+            text-align: center; /* Centraliza o conteúdo dentro do contêiner */
+            color: white; /* Define a cor do texto como branca */
+        }
+        table {
+            border-collapse: collapse;
+		color: white; /* Define a cor do texto como branca */
+        }
+        /* Adicione mais estilos CSS conforme necessário */
+    </style>
+</head>
+<body>
+<body><html>
+<head>
+    <title>ferias</title>
+    <style>
+        .logo {
+            position: absolute;
+            top: -110px;
+            right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src=F:\html\221e947e-9b50-4317-b279-e6201f3e284d-removebg-preview.png alt="Logotipo da Empresa">
+ <div class="container">
+</body>
+</html>
+<p>
+    <h1>Cálculo de Datas de Início e Vencimento de Férias</h1>
+<br>
+<br>
+
+</p>
+
+
+    <label for="dataContratacao">Data de Contratação:</label>
+    <input type="date" id="dataContratacao" required><br>
+
+    <button onclick="calcularDatas()">Calcular Datas</button>
+
+    <p>Primeira Férias:</p>
+    <p>Data de Início: <span id="dataInicio1"></span></p>
+    <p>Data de Vencimento: <span id="dataVencimento1"></span></p>
+
+    <p>Segunda Férias:</p>
+    <p>Data de Início: <span id="dataInicio2"></span></p>
+    <p>Data de Vencimento: <span id="dataVencimento2"></span></p>
+
+    <script>
+        function calcularDatas() {
+            var dataContratacao = new Date(document.getElementById("dataContratacao").value);
+
+            // Calcular a data de início da primeira férias com base na data de contratação
+            var dataInicio1 = new Date(dataContratacao);
+            dataInicio1.setFullYear(dataInicio1.getFullYear() + 1);
+
+            // Calcular a data de vencimento da primeira férias (12 meses após a data de início)
+            var dataVencimento1 = new Date(dataInicio1);
+            dataVencimento1.setFullYear(dataVencimento1.getFullYear() + 1);
+
+            // Calcular a data de início da segunda férias (24 meses após a data de contratação)
+            var dataInicio2 = new Date(dataContratacao);
+            dataInicio2.setFullYear(dataInicio2.getFullYear() + 2);
+
+            // Calcular a data de vencimento da segunda férias (12 meses após a data de início da segunda férias)
+            var dataVencimento2 = new Date(dataInicio2);
+            dataVencimento2.setFullYear(dataVencimento2.getFullYear() + 1);
+
+            // Formatar as datas para exibição
+            var formatoData = { year: 'numeric', month: 'long', day: 'numeric' };
+            var dataInicio1Formatada = dataInicio1.toLocaleDateString('pt-BR', formatoData);
+            var dataVencimento1Formatada = dataVencimento1.toLocaleDateString('pt-BR', formatoData);
+            var dataInicio2Formatada = dataInicio2.toLocaleDateString('pt-BR', formatoData);
+            var dataVencimento2Formatada = dataVencimento2.toLocaleDateString('pt-BR', formatoData);
+
+            document.getElementById("dataInicio1").textContent = dataInicio1Formatada;
+            document.getElementById("dataVencimento1").textContent = dataVencimento1Formatada;
+            document.getElementById("dataInicio2").textContent = dataInicio2Formatada;
+            document.getElementById("dataVencimento2").textContent = dataVencimento2Formatada;
+        }
+    </script>
+<body>
+<a href="file:///C:/Users/D%26C%20Inform%C3%A1tica/OneDrive/%C3%81rea%20de%20Trabalho/PROJETO%20PIM/Tela%20Pos%20Login.html">
+        <button>voltar</button>
+    </a>
+</body>
+</body>
+</html>

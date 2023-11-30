@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Folha de Ponto</title>
+    <link rel="icon" href="https://ashisheditz.com/wp-content/uploads/2023/10/monkey-d-luffy-wallpaper-4k.jpg"> 
+    <style>
+        body {
+            background-image: url('https://st.depositphotos.com/2369859/4125/i/600/depositphotos_41254319-stock-photo-abstract-dark-blue-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            color: rgb(255, 255, 255); /* Define a cor do texto como branca */
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .logo {
+            position: absolute;
+            top: -10px;
+            right: 60px;
+		 width: 350px
+        }
+
+        h1, p {
+            color: rgb(244, 244, 244); /* Define a cor do texto como branca */
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="logo" src="file:///F:/html/luffy.png" alt="Logotipo da Empresa">
+	
+    <div class="container">
+        <h1>Dados do funcionário</h1>
+        <p>Cargo: Analista</p>
+        <p>Salário Base: R$ 3.000,00</p>
+
+<p1>
+    <h1>Folha de Ponto</h1>
+    <table border="1">
+         <tr>
+            <th>Data</th>
+            <th>Entrada</th>
+	    <th>Ida Almoço</th>
+	    <th>Volta Almoço</th>
+            <th>Saída</th>
+            <th>Horas Trabalhadas</th>
+        </tr>
+        <tr>
+            <td>01/10/2023</td>
+            <td><input type="text" class="entrada" /></td>
+	    <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="saida" /></td>
+            <td class="horasTrabalhadas"></td>
+        </tr>
+         <tr>
+            <td>02/10/2023</td>
+            <td><input type="text" class="entrada" /></td>
+	    <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="saida" /></td>
+            <td class="horasTrabalhadas"></td>
+        </tr>
+         <tr>
+            <td>03/10/2023</td>
+            <td><input type="text" class="entrada" /></td>
+	    <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="saida" /></td>
+            <td class="horasTrabalhadas"></td>
+        </tr>
+         <tr>
+            <td>04/10/2023</td>
+            <td><input type="text" class="entrada" /></td>
+	    <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="saida" /></td>
+            <td class="horasTrabalhadas"></td>
+        </tr>
+ <tr>
+            <td>05/10/2023</td>
+            <td><input type="text" class="entrada" /></td>
+	    <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="almoço" /></td>
+            <td><input type="text" class="saida" /></td>
+            <td class="horasTrabalhadas"></td>
+        </tr>
+        <!-- Adicione mais linhas conforme necessário -->
+    </table>
+
+    <h2>Registro de Horas</h2>
+    <table border="1">
+        <tr>
+            <th>Data</th>
+            <th>Horas Trabalhadas</th>
+        </tr>
+        <tr>
+            <td>01/10/2023</td>
+            <td class="horasTrabalhadasContracheque"></td>
+        </tr>
+        <tr>
+            <td>02/10/2023</td>
+            <td class="horasTrabalhadasContracheque"></td>
+        </tr>
+        <tr>
+            <td>03/10/2023</td>
+            <td class="horasTrabalhadasContracheque"></td>
+        </tr>
+        <tr>
+            <td>04/10/2023</td>
+            <td class="horasTrabalhadasContracheque"></td>
+        </tr>
+<tr>
+            <td>05/10/2023</td>
+            <td class="horasTrabalhadasContracheque"></td>
+        </tr>
+        <!-- Adicione mais linhas conforme necessário -->
+    </table>
+
+    <p>Salário Bruto: R$ <span id="salarioBruto">0.00</span></p>
+    <p>Imposto de Renda: R$ <span id="impostoRenda">0.00</span></p>
+    <p>INSS: R$ <span id="inss">0.00</span></p>
+    <p>Salário Líquido: R$ <span id="salarioLiquido">0.00</span></p>
+
+    <script>
+        // Função para calcular as horas trabalhadas
+        function calcularHorasTrabalhadas(entrada, saida) {
+            if (entrada && saida) {
+                var entradaHora = parseInt(entrada.split(':')[0]);
+                var entradaMinuto = parseInt(entrada.split(':')[1]);
+                var saidaHora = parseInt(saida.split(':')[0]);
+                var saidaMinuto = parseInt(saida.split(':')[1]);
+
+                var minutosTrabalhados = (saidaHora * 60 + saidaMinuto) - (entradaHora * 60 + entradaMinuto) - 60; // Desconto de 1 hora
+                var horasTrabalhadas = Math.floor(minutosTrabalhados / 60);
+                var minutosTrabalhadosRestantes = minutosTrabalhados % 60;
+
+                return horasTrabalhadas + " horas " + minutosTrabalhadosRestantes + " minutos";
+            } else {
+                return "";
+            }
+        }
+
+        // Função para calcular o valor bruto
+        function calcularValorBruto(minutosTrabalhados) {
+            var salarioBase = 3000.00; // Salário base mensal
+            var valorHora = salarioBase / 160; // Considerando 160 horas de trabalho no mês
+            var valorBruto = (minutosTrabalhados * valorHora / 60).toFixed(2);
+            return valorBruto;
+        }
+
+        // Função para calcular o valor do Imposto de Renda (valor fictício)
+        function calcularImpostoRenda(salarioBruto) {
+            var impostoRenda = 0.15; // 15% de Imposto de Renda (valor fictício)
+            var valorImpostoRenda = salarioBruto * impostoRenda;
+            return valorImpostoRenda.toFixed(2);
+        }
+
+        // Função para calcular o valor do INSS (valor fictício)
+        function calcularINSS(salarioBruto) {
+            var inss = 0.10; // 10% de INSS (valor fictício)
+            var valorINSS = salarioBruto * inss;
+            return valorINSS.toFixed(2);
+        }
+
+        // Função para calcular o salário líquido
+        function calcularSalarioLiquido(salarioBruto, valorImpostoRenda, valorINSS) {
+            var salarioLiquido = salarioBruto - valorImpostoRenda - valorINSS;
+            return salarioLiquido.toFixed(2);
+        }
+
+        // Função para atualizar horas trabalhadas e contracheque em tempo real
+        function atualizarHorasEContracheque() {
+            var entradas = document.querySelectorAll('.entrada');
+            var saidas = document.querySelectorAll('.saida');
+            var horasTrabalhadasElements = document.querySelectorAll('.horasTrabalhadas');
+            var horasTrabalhadasContrachequeElements = document.querySelectorAll('.horasTrabalhadasContracheque');
+
+
+            for (var i = 0; i < entradas.length; i++) {
+                var entrada = entradas[i].value;
+                var saida = saidas[i].value;
+
+                var horasTrabalhadas = calcularHorasTrabalhadas(entrada, saida);
+                horasTrabalhadasElements[i].textContent = horasTrabalhadas;
+                horasTrabalhadasContrachequeElements[i].textContent = horasTrabalhadas;
+            }
+
+            // Calcula o salário bruto
+            var totalMinutosTrabalhados = Array.from(horasTrabalhadasElements).map(element => {
+                var horasMinutos = element.textContent.split(" ");
+                if (horasMinutos.length == 4) {
+                    return (parseInt(horasMinutos[0]) * 60 + parseInt(horasMinutos[2]));
+                } else {
+                    return 0;
+                }
+            });
+            var totalMinutos = totalMinutosTrabalhados.reduce((a, b) => a + b, 0);
+            var salarioBruto = calcularValorBruto(totalMinutos);
+            document.getElementById("salarioBruto").textContent = salarioBruto;
+
+            // Calcula o Imposto de Renda
+            var valorImpostoRenda = calcularImpostoRenda(salarioBruto);
+            document.getElementById("impostoRenda").textContent = valorImpostoRenda;
+
+            // Calcula o INSS
+            var valorINSS = calcularINSS(salarioBruto);
+            document.getElementById("inss").textContent = valorINSS;
+
+            // Calcula o salário líquido
+            var salarioLiquido = calcularSalarioLiquido(salarioBruto, valorImpostoRenda, valorINSS);
+            document.getElementById("salarioLiquido").textContent = salarioLiquido;
+        }
+
+        // Atualiza automaticamente quando os campos de entrada e saída são alterados
+        var entradas = document.querySelectorAll('.entrada');
+        var saidas = document.querySelectorAll('.saida');
+
+        for (var i = 0; i < entradas.length; i++) {
+            entradas[i].addEventListener('input', atualizarHorasEContracheque);
+            saidas[i].addEventListener('input', atualizarHorasEContracheque);
+        }
+
+        // Chama a função para calcular as horas e atualizar o contracheque no carregamento da página
+        var horasTrabalhadasContrachequeElements = document.querySelectorAll('.horasTrabalhadasContracheque');
+    </script>
+     
+     <a href="file:///C:/Users/D%26C%20Inform%C3%A1tica/OneDrive/%C3%81rea%20de%20Trabalho/PROJETO%20PIM/Tela%20Pos%20Login.html">
+        <button>voltar</button>
+    </a>
+
+</body>
+
+</html>
